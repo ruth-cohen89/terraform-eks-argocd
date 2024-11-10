@@ -7,6 +7,7 @@ spec:
   project: default
   source:
     repoURL: "https://github.com/ruth-cohen89/terraform-eks-argocd.git"
+    # replace to main
     targetRevision: dev
     path: "hello-world"
   destination:
