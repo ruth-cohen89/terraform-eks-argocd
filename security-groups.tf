@@ -81,4 +81,15 @@ resource "aws_security_group" "eks_nodes" {
     Name        = "${var.eks_cluster_name}-${var.env}/ClusterSharedNodeSecurityGroup"
     Environment = var.env
   }
+  
+}
+
+resource "aws_security_group_rule" "allow_control_plane_access" {
+  type                     = "ingress"
+  from_port                = 9443
+  to_port                  = 9443
+  protocol                 = "tcp"
+  security_group_id       = aws_security_group.eks_cluster.id
+  source_security_group_id = aws_security_group.eks_nodes.id
+  description             = "Allow access from control plane to webhook port of AWS load balancer controller"
 }

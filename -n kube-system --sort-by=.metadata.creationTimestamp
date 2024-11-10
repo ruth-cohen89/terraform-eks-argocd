@@ -1,0 +1,24 @@
+{
+    "AttachedPolicies": [
+        {
+            "PolicyName": "AmazonEKSClusterPolicy",
+            "PolicyArn": "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
+        },
+        {
+            "PolicyName": "ElasticLoadBalancingFullAccess",
+            "PolicyArn": "arn:aws:iam::aws:policy/ElasticLoadBalancingFullAccess"
+        },
+        {
+            "PolicyName": "AmazonEC2RoleforSSM",
+            "PolicyArn": "arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM"
+        },
+        {
+            "PolicyName": "AmazonEKSServicePolicy",
+            "PolicyArn": "arn:aws:iam::aws:policy/AmazonEKSServicePolicy"
+        },
+        {
+            "PolicyName": "AmazonEKSVPCResourceController",
+            "PolicyArn": "arn:aws:iam::aws:policy/AmazonEKSVPCResourceController"
+        }
+    ]
+}

@@ -21,13 +21,20 @@ resource "aws_eks_cluster" "eks" {
 
   enabled_cluster_log_types = ["api", "audit", "authenticator", "controllerManager", "scheduler"]
 
-  depends_on = [
-    aws_iam_role_policy_attachment.eks-AmazonEKSClusterPolicy,
-    aws_iam_role_policy_attachment.eks-AmazonEKSVPCResourceController,
-    aws_iam_role_policy_attachment.eks-AmazonEKSServicePolicy
-  ]
+depends_on = [
+  aws_iam_role_policy_attachment.eks-AmazonEKSClusterPolicy,
+  aws_iam_role_policy_attachment.eks-AmazonEKSVPCResourceController,
+  aws_iam_role_policy_attachment.eks-AmazonEKSServicePolicy,
+  aws_iam_role_policy_attachment.eks-load-balancer-permissions,  # Ensure ELB permissions are attached
+  aws_iam_role_policy_attachment.eks-EC2MetadataAccess-attachment,  # Ensure EC2 Metadata Access policy is applied
+ # aws_iam_openid_connect_provider.eks  # Add OIDC provider as a dependency
+
+]
+
 
   tags = {
     Environment = var.env
   }
+
+  
 }

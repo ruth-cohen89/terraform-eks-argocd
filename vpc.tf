@@ -15,7 +15,8 @@ resource "aws_subnet" "public" {
   map_public_ip_on_launch = true
   tags = {
     Name                       = "public-subnet-${count.index + 1}"
-    # "kubernetes.io/role/elb"   = "1"  # Tag for external LoadBalancer
+    "kubernetes.io/role/elb"   = "1"  # Tag for external LoadBalancer
+    "kubernetes.io/cluster/${var.eks_cluster_name}-${var.env}" = "owned"  # Correct tag to match full cluster name
     "subnet_type"              = "public"
   }
 }
@@ -28,7 +29,8 @@ resource "aws_subnet" "private" {
   map_public_ip_on_launch = false
   tags = {
     Name                             = "private-subnet-${count.index + 1}"
-    # "kubernetes.io/role/internal-elb" = "1"  # Tag for internal LoadBalancer
+    "kubernetes.io/role/internal-elb" = "1"  # Tag for internal LoadBalancer
+    "kubernetes.io/cluster/${var.eks_cluster_name}-${var.env}" = "owned"  # Correct tag to match full cluster name
     "subnet_type"                     = "private"
   }
 }

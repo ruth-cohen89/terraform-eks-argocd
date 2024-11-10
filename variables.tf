@@ -27,3 +27,14 @@ variable "argocd_k8s_namespace" {
   type    = string
   default = "argo-cd"
 }
+variable "oidc_provider_arn" {
+  description = "OIDC Provider ARN used for IRSA"
+  type        = string
+  default     = "arn:aws:iam::499171398741:oidc-provider/oidc.eks.il-central-1.amazonaws.com/id/1B8658157CE3BC0C028CDC6ECF3B6E7D"
+}
+
+variable "vpc_id" {
+  description = "VPC ID which Load balancers will be  deployed in"
+  type = string
+  default = "vpc-0d9d45d27c86e0c4d"
+}
