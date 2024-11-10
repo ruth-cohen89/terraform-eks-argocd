@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hello-world
+  namespace: argo-cd
+spec:
+  project: default
+  source:
+    repoURL: "https://github.com/ruth-cohen89/terraform-eks-argocd.git" # Replace with your GitHub repo URL
+    targetRevision: HEAD
+    path: "hello-world" # Path where your YAML files are located in the repo
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: default # Change if deploying to another namespace
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
