@@ -93,3 +93,24 @@ resource "aws_security_group_rule" "allow_control_plane_access" {
   source_security_group_id = aws_security_group.eks_nodes.id
   description             = "Allow access from control plane to webhook port of AWS load balancer controller"
 }
+
+
+resource "aws_security_group_rule" "argocd_lb_inbound_http" {
+  type                     = "ingress"
+  from_port                = 80
+  to_port                  = 80
+  protocol                 = "tcp"
+  cidr_blocks              = ["0.0.0.0/0"]
+  security_group_id        = aws_security_group.eks_cluster.id # Replace with the LB's SG ID if separate
+  description              = "Allow HTTP access to ArgoCD load balancer"
+}
+
+resource "aws_security_group_rule" "argocd_lb_inbound_https" {
+  type                     = "ingress"
+  from_port                = 443
+  to_port                  = 443
+  protocol                 = "tcp"
+  cidr_blocks              = ["0.0.0.0/0"]
+  security_group_id        = aws_security_group.eks_cluster.id # Replace with the LB's SG ID if separate
+  description              = "Allow HTTPS access to ArgoCD load balancer"
+}

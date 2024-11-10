@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: hello-world
   annotations:
-    service.beta.kubernetes.io/aws-load-balancer-type: "nlb" # Use ALB or NLB based on your needs
+    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
 spec:
   type: LoadBalancer
   selector:

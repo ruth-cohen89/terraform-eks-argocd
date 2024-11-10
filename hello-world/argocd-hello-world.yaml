@@ -6,13 +6,13 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: "https://github.com/ruth-cohen89/terraform-eks-argocd.git" # Replace with your GitHub repo URL
-    # targetRevision: HEAD
+    repoURL: "https://github.com/ruth-cohen89/terraform-eks-argocd.git"
+    # replace to main
     targetRevision: Add_lb_controller
-    path: "hello-world" # Path where your YAML files are located in the repo
+    path: "hello-world"
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: default # Change if deploying to another namespace
+    namespace: default
   syncPolicy:
     automated:
       prune: true
