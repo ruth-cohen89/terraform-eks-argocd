@@ -7,8 +7,7 @@ spec:
   project: default
   source:
     repoURL: "https://github.com/ruth-cohen89/terraform-eks-argocd.git"
-    # replace to main
-    targetRevision: Add_lb_controller
+    targetRevision: dev
     path: "hello-world"
   destination:
     server: "https://kubernetes.default.svc"
